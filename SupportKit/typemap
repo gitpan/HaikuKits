@@ -1,0 +1,53 @@
+#
+#Automatically generated file
+#
+	
+TYPEMAP
+uint32		T_UV
+int32		T_IV
+image_id		T_IV
+status_t		T_IV
+BMessage*		NORM_OBJ_PTR
+BBeep		NORM_OBJ
+BBeep*		NORM_OBJ_PTR
+BArchivable		NORM_OBJ
+BArchivable*		NORM_OBJ_PTR
+BArchiver		NORM_OBJ
+BArchiver*		NORM_OBJ_PTR
+BUnarchiver		NORM_OBJ
+BUnarchiver*		NORM_OBJ_PTR
+Errors		NORM_OBJ
+Errors*		NORM_OBJ_PTR
+BTypeConstants		NORM_OBJ
+BTypeConstants*		NORM_OBJ_PTR
+const BMessage*		NORM_OBJ_PTR
+char**		CHARARRAY
+
+OUTPUT
+
+RESP_OBJ
+	sv_setsv($arg, $var.perl_link_data->perl_object);
+
+RESP_OBJ_PTR
+	sv_setsv($arg, $var->perl_link_data->perl_object);
+
+NORM_OBJ
+	sv_setsv($arg, create_perl_object((void*)&$var, CLASS));
+
+NORM_OBJ_PTR
+	sv_setsv($arg, create_perl_object((void*)$var, CLASS));
+
+INPUT
+
+RESP_OBJ
+	$var = *($type*)get_cpp_object($arg);
+
+RESP_OBJ_PTR
+	$var = ($type)get_cpp_object($arg);
+
+NORM_OBJ
+	$var = *($type*)get_cpp_object($arg);
+
+NORM_OBJ_PTR
+	$var = ($type)get_cpp_object($arg);
+

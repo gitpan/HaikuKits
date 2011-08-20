@@ -1,0 +1,48 @@
+#
+# Automatically generated file
+#
+
+package Haiku::Cursor;
+use strict;
+use warnings;
+require Exporter;
+
+our $VERSION = 0.01;
+our @ISA = qw(Exporter Haiku::Archivable);
+
+my @ids_group = qw(B_CURSOR_ID_SYSTEM_DEFAULT B_CURSOR_ID_CONTEXT_MENU B_CURSOR_ID_COPY B_CURSOR_ID_CREATE_LINK B_CURSOR_ID_CROSS_HAIR B_CURSOR_ID_FOLLOW_LINK B_CURSOR_ID_GRAB B_CURSOR_ID_GRABBING B_CURSOR_ID_HELP B_CURSOR_ID_I_BEAM B_CURSOR_ID_I_BEAM_HORIZONTAL B_CURSOR_ID_MOVE B_CURSOR_ID_NO_CURSOR B_CURSOR_ID_NOT_ALLOWED B_CURSOR_ID_PROGRESS B_CURSOR_ID_RESIZE_NORTH B_CURSOR_ID_RESIZE_EAST B_CURSOR_ID_RESIZE_SOUTH B_CURSOR_ID_RESIZE_WEST B_CURSOR_ID_RESIZE_NORTH_EAST B_CURSOR_ID_RESIZE_NORTH_WEST B_CURSOR_ID_RESIZE_SOUTH_EAST B_CURSOR_ID_RESIZE_SOUTH_WEST B_CURSOR_ID_RESIZE_NORTH_SOUTH B_CURSOR_ID_RESIZE_EAST_WEST B_CURSOR_ID_RESIZE_NORTH_EAST_SOUTH_WEST B_CURSOR_ID_RESIZE_NORTH_WEST_SOUTH_EAST B_CURSOR_ID_ZOOM_IN B_CURSOR_ID_ZOOM_OUT);
+
+our %EXPORT_TAGS = (
+	ids => [@ids_group]
+);
+our @EXPORT_OK = (@ids_group);
+
+#
+# POD for Haiku::Cursor::new
+#
+
+#
+# POD for Haiku::Cursor::newFromCursor
+#
+
+#
+# POD for Haiku::Cursor::newFromID
+#
+
+#
+# POD for Haiku::Cursor::newFromMessage
+#
+
+#
+# POD for Haiku::Cursor::DESTROY
+#
+
+#
+# POD for Haiku::Cursor::Instantiate
+#
+
+#
+# POD for Haiku::Cursor::Archive
+#
+
+1;

@@ -1,0 +1,79 @@
+#
+#Automatically generated file
+#
+	
+TYPEMAP
+int8		T_IV
+uint8		T_UV
+int16		T_IV
+uint16		T_UV
+int32		T_IV
+uint32		T_UV
+int64		T_IV
+uint64		T_UV
+BCursorID		T_IV
+bigtime_t		T_IV
+dev_t		T_IV
+ino_t		T_IV
+sem_id		T_IV
+ssize_t		T_IV
+status_t		T_IV
+team_id		T_IV
+thread_id		T_IV
+type_code		T_IV
+BArchivable*		NORM_OBJ_PTR
+BPoint*		NORM_OBJ_PTR
+BPoint		NORM_OBJ
+BRect		NORM_OBJ
+BWindow*		NORM_OBJ_PTR
+entry_ref*		NORM_OBJ_PTR
+entry_ref		NORM_OBJ
+BHandler		NORM_OBJ
+BHandler*		NORM_OBJ_PTR
+BLooper		NORM_OBJ
+BLooper*		NORM_OBJ_PTR
+BApplication		NORM_OBJ
+BApplication*		NORM_OBJ_PTR
+Custom_BApplication		RESP_OBJ
+Custom_BApplication*		RESP_OBJ_PTR
+BClipboard		NORM_OBJ
+BClipboard*		NORM_OBJ_PTR
+BCursor		NORM_OBJ
+BCursor*		NORM_OBJ_PTR
+BInvoker		NORM_OBJ
+BInvoker*		NORM_OBJ_PTR
+BMessage		NORM_OBJ
+BMessage*		NORM_OBJ_PTR
+BMessenger		NORM_OBJ
+BMessenger*		NORM_OBJ_PTR
+const BMessage*		NORM_OBJ_PTR
+char**		CHARARRAY
+
+OUTPUT
+
+RESP_OBJ
+	sv_setsv($arg, $var.perl_link_data->perl_object);
+
+RESP_OBJ_PTR
+	sv_setsv($arg, $var->perl_link_data->perl_object);
+
+NORM_OBJ
+	sv_setsv($arg, create_perl_object((void*)&$var, CLASS));
+
+NORM_OBJ_PTR
+	sv_setsv($arg, create_perl_object((void*)$var, CLASS));
+
+INPUT
+
+RESP_OBJ
+	$var = *($type*)get_cpp_object($arg);
+
+RESP_OBJ_PTR
+	$var = ($type)get_cpp_object($arg);
+
+NORM_OBJ
+	$var = *($type*)get_cpp_object($arg);
+
+NORM_OBJ_PTR
+	$var = ($type)get_cpp_object($arg);
+

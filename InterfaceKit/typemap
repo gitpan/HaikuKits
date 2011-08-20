@@ -1,0 +1,214 @@
+#
+#Automatically generated file
+#
+	
+TYPEMAP
+uchar		T_UV
+uint8		T_UV
+uint16		T_UV
+int16		T_IV
+uint32		T_UV
+int32		T_IV
+uint64		T_UV
+BMenu::add_state		T_IV
+add_state		T_IV
+alert_type		T_IV
+alignment		T_IV
+alpha_function		T_IV
+area_id		T_IV
+bigtime_t		T_IV
+border_style		T_IV
+button_spacing		T_IV
+button_width		T_IV
+cap_mode		T_IV
+color_control_layout		T_IV
+color_space		T_IV
+color_which		T_IV
+drawing_mode		T_IV
+font_direction		T_IV
+font_family		T_IV
+font_file_format		T_IV
+font_metric_mode		T_IV
+font_style		T_IV
+hash_mark_location		T_IV
+icon_size		T_IV
+join_mode		T_IV
+list_view_type		T_IV
+menu_bar_border		T_IV
+menu_layout		T_IV
+mode_focus_follows_mouse		T_IV
+mode_mouse		T_IV
+orientation		T_IV
+size_t		T_IV
+source_alpha		T_IV
+status_t		T_IV
+thumb_style		T_IV
+uint8*		T_PV
+undo_state		T_IV
+window_alignment		T_IV
+window_look		T_IV
+window_feel		T_IV
+window_type		T_IV
+BArchivable*		NORM_OBJ_PTR
+BClipboard*		NORM_OBJ_PTR
+BCursor*		NORM_OBJ_PTR
+BHandler*		NORM_OBJ_PTR
+BInvoker*		NORM_OBJ_PTR
+BMessage		NORM_OBJ
+BMessage*		NORM_OBJ_PTR
+BMessenger		NORM_OBJ
+BNode*		NORM_OBJ_PTR
+BMenu*		NORM_OBJ_PTR
+BWindow		NORM_OBJ
+BWindow*		NORM_OBJ_PTR
+Custom_BWindow		RESP_OBJ
+Custom_BWindow*		RESP_OBJ_PTR
+BAlert		NORM_OBJ
+BAlert*		NORM_OBJ_PTR
+BView		NORM_OBJ
+BView*		NORM_OBJ_PTR
+BBox		NORM_OBJ
+BBox*		NORM_OBJ_PTR
+BControl		NORM_OBJ
+BControl*		NORM_OBJ_PTR
+BButton		NORM_OBJ
+BButton*		NORM_OBJ_PTR
+BCheckBox		NORM_OBJ
+BCheckBox*		NORM_OBJ_PTR
+BColorControl		NORM_OBJ
+BColorControl*		NORM_OBJ_PTR
+BPictureButton		NORM_OBJ
+BPictureButton*		NORM_OBJ_PTR
+BRadioButton		NORM_OBJ
+BRadioButton*		NORM_OBJ_PTR
+BSlider		NORM_OBJ
+BSlider*		NORM_OBJ_PTR
+BTextControl		NORM_OBJ
+BTextControl*		NORM_OBJ_PTR
+BListView		NORM_OBJ
+BListView*		NORM_OBJ_PTR
+BOutlineListView		NORM_OBJ
+BOutlineListView*		NORM_OBJ_PTR
+BMenu		NORM_OBJ
+menu_info		NORM_OBJ
+menu_info*		NORM_OBJ_PTR
+BMenuBar		NORM_OBJ
+BMenuBar*		NORM_OBJ_PTR
+BPopUpMenu		NORM_OBJ
+BPopUpMenu*		NORM_OBJ_PTR
+BMenuField		NORM_OBJ
+BMenuField*		NORM_OBJ_PTR
+BScrollBar		NORM_OBJ
+BScrollBar*		NORM_OBJ_PTR
+BScrollView		NORM_OBJ
+BScrollView*		NORM_OBJ_PTR
+BStatusBar		NORM_OBJ
+BStatusBar*		NORM_OBJ_PTR
+BStringView		NORM_OBJ
+BStringView*		NORM_OBJ_PTR
+BTabView		NORM_OBJ
+BTabView*		NORM_OBJ_PTR
+BTab		NORM_OBJ
+BTab*		NORM_OBJ_PTR
+BTextView		NORM_OBJ
+BTextView*		NORM_OBJ_PTR
+Custom_BTextView		RESP_OBJ
+Custom_BTextView*		RESP_OBJ_PTR
+text_run		NORM_OBJ
+text_run*		NORM_OBJ_PTR
+text_run_array		NORM_OBJ
+text_run_array*		NORM_OBJ_PTR
+BMenuItem		NORM_OBJ
+BMenuItem*		NORM_OBJ_PTR
+BSeparatorItem		NORM_OBJ
+BSeparatorItem*		NORM_OBJ_PTR
+BListItem		NORM_OBJ
+BListItem*		NORM_OBJ_PTR
+BStringItem		NORM_OBJ
+BStringItem*		NORM_OBJ_PTR
+BFont		NORM_OBJ
+BFont*		NORM_OBJ_PTR
+unicode_block		NORM_OBJ
+unicode_block*		NORM_OBJ_PTR
+edge_info		NORM_OBJ
+edge_info*		NORM_OBJ_PTR
+font_height		NORM_OBJ
+font_height*		NORM_OBJ_PTR
+escapement_delta		NORM_OBJ
+escapement_delta*		NORM_OBJ_PTR
+font_cache_info		NORM_OBJ
+font_cache_info*		NORM_OBJ_PTR
+tuned_font_info		NORM_OBJ
+tuned_font_info*		NORM_OBJ_PTR
+BPicture		NORM_OBJ
+BPicture*		NORM_OBJ_PTR
+BPoint		NORM_OBJ
+BPoint*		NORM_OBJ_PTR
+BPolygon		NORM_OBJ
+BPolygon*		NORM_OBJ_PTR
+BRect		NORM_OBJ
+BRect*		NORM_OBJ_PTR
+BScreen		NORM_OBJ
+BScreen*		NORM_OBJ_PTR
+BShape		NORM_OBJ
+BShape*		NORM_OBJ_PTR
+BShapeIterator		NORM_OBJ
+BShapeIterator*		NORM_OBJ_PTR
+key_info		NORM_OBJ
+key_info*		NORM_OBJ_PTR
+key_map		NORM_OBJ
+key_map*		NORM_OBJ_PTR
+mouse_map		NORM_OBJ
+mouse_map*		NORM_OBJ_PTR
+scroll_bar_info		NORM_OBJ
+scroll_bar_info*		NORM_OBJ_PTR
+pattern		NORM_OBJ
+pattern*		NORM_OBJ_PTR
+rgb_color		NORM_OBJ
+rgb_color*		NORM_OBJ_PTR
+color_map		NORM_OBJ
+color_map*		NORM_OBJ_PTR
+overlay_rect_limits		NORM_OBJ
+overlay_rect_limits*		NORM_OBJ_PTR
+overlay_restrictions		NORM_OBJ
+overlay_restrictions*		NORM_OBJ_PTR
+screen_id		NORM_OBJ
+screen_id*		NORM_OBJ_PTR
+const rgb_color*		NORM_OBJ_PTR
+const BFont*		NORM_OBJ_PTR
+const BListItem*		NORM_OBJ_PTR
+const text_run_array*		NORM_OBJ_PTR
+const font_family		T_IV
+const font_style		T_IV
+const color_map*		NORM_OBJ_PTR
+const BPoint		NORM_OBJ
+char**		CHARARRAY
+
+OUTPUT
+
+RESP_OBJ
+	sv_setsv($arg, $var.perl_link_data->perl_object);
+
+RESP_OBJ_PTR
+	sv_setsv($arg, $var->perl_link_data->perl_object);
+
+NORM_OBJ
+	sv_setsv($arg, create_perl_object((void*)&$var, CLASS));
+
+NORM_OBJ_PTR
+	sv_setsv($arg, create_perl_object((void*)$var, CLASS));
+
+INPUT
+
+RESP_OBJ
+	$var = *($type*)get_cpp_object($arg);
+
+RESP_OBJ_PTR
+	$var = ($type)get_cpp_object($arg);
+
+NORM_OBJ
+	$var = *($type*)get_cpp_object($arg);
+
+NORM_OBJ_PTR
+	$var = ($type)get_cpp_object($arg);
+

@@ -1,0 +1,581 @@
+#
+# Automatically generated file
+#
+
+MODULE = Haiku::StorageKit	PACKAGE = Haiku::FindDirectory
+
+PROTOTYPES: DISABLE
+
+SV*
+find_directory(which, volume, createIt)
+	INPUT:
+		directory_which which;
+		dev_t volume;
+		bool createIt;
+	INIT:
+		char* pathString;
+		int32 length;
+		status_t retval;
+		SV* error_sv;
+		SV* pathString_sv = newSV(0);	// retcount == 1
+	CODE:
+		// item 0: which
+		// item 1: volume
+		// item 2: createIt
+		// not an XS input: length
+		
+		retval = find_directory(which, volume, createIt, pathString, length);
+		
+		if (retval != B_OK) {
+			// this doesn't seem to be working...
+			error_sv = get_sv("!", 1);
+			sv_setiv(error_sv, (IV)retval);
+			// ...so use this for now
+			error_sv = get_sv("Haiku::StorageKit::Error", 1);
+			sv_setiv(error_sv, (IV)retval);
+			XSRETURN_UNDEF;
+		}
+		pathString_sv = newSVpvn((char*)pathString, (STRLEN)length);
+		if (is_utf8_string((const U8*)pathString, (STRLEN)length)) {
+			SvUTF8_on(pathString_sv);
+		}
+		RETVAL = pathString_sv;
+	OUTPUT:
+		RETVAL
+
+SV*
+find_directory_into_path(which, ...)
+	INPUT:
+		directory_which which;
+	INIT:
+		BPath* path;
+		bool createIt = false;
+		BVolume* volume = NULL;
+		status_t retval;
+		SV* error_sv;
+		SV* path_sv = newSV(0);	// retcount == 1
+	CODE:
+		// item 0: which
+		// item 2: createIt
+		if (items > 2) {
+			createIt = SvTRUE(ST(2));
+		}
+		// item 3: volume
+		if (items > 3) {
+			volume = (BVolume*)get_cpp_object(ST(3));
+		}
+		
+		retval = find_directory(which, path, createIt, volume);
+		
+		if (retval != B_OK) {
+			// this doesn't seem to be working...
+			error_sv = get_sv("!", 1);
+			sv_setiv(error_sv, (IV)retval);
+			// ...so use this for now
+			error_sv = get_sv("Haiku::StorageKit::Error", 1);
+			sv_setiv(error_sv, (IV)retval);
+			XSRETURN_UNDEF;
+		}
+		path_sv = create_perl_object((void*)path, "Haiku::Path", false);
+		DUMPME(1,path_sv);
+		RETVAL = newSVsv(path_sv);
+		SvREFCNT_dec(path_sv);
+	OUTPUT:
+		RETVAL
+
+SV*
+B_DESKTOP_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_DESKTOP_DIRECTORY);
+		dualize(RETVAL, "B_DESKTOP_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_TRASH_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_TRASH_DIRECTORY);
+		dualize(RETVAL, "B_TRASH_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_ADDONS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_ADDONS_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_ADDONS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_BOOT_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_BOOT_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_BOOT_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_FONTS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_FONTS_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_FONTS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_LIB_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_LIB_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_LIB_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_SERVERS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_SERVERS_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_SERVERS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_APPS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_APPS_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_APPS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_BIN_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_BIN_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_BIN_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_DOCUMENTATION_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_DOCUMENTATION_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_DOCUMENTATION_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_PREFERENCES_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_PREFERENCES_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_PREFERENCES_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_TRANSLATORS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_TRANSLATORS_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_TRANSLATORS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_MEDIA_NODES_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_MEDIA_NODES_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_MEDIA_NODES_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_SOUNDS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_SOUNDS_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_SOUNDS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_SYSTEM_DATA_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_SYSTEM_DATA_DIRECTORY);
+		dualize(RETVAL, "B_SYSTEM_DATA_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_SYSTEM_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_SYSTEM_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_SYSTEM_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_ADDONS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_ADDONS_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_ADDONS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_BOOT_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_BOOT_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_BOOT_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_FONTS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_FONTS_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_FONTS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_LIB_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_LIB_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_LIB_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_SERVERS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_SERVERS_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_SERVERS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_BIN_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_BIN_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_BIN_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_ETC_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_ETC_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_ETC_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_DOCUMENTATION_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_DOCUMENTATION_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_DOCUMENTATION_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_SETTINGS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_SETTINGS_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_SETTINGS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_DEVELOP_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_DEVELOP_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_DEVELOP_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_LOG_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_LOG_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_LOG_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_SPOOL_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_SPOOL_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_SPOOL_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_TEMP_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_TEMP_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_TEMP_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_VAR_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_VAR_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_VAR_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_TRANSLATORS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_TRANSLATORS_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_TRANSLATORS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_MEDIA_NODES_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_MEDIA_NODES_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_MEDIA_NODES_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_SOUNDS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_SOUNDS_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_SOUNDS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_DATA_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_DATA_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_DATA_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_COMMON_CACHE_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_COMMON_CACHE_DIRECTORY);
+		dualize(RETVAL, "B_COMMON_CACHE_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_DIRECTORY);
+		dualize(RETVAL, "B_USER_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_CONFIG_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_CONFIG_DIRECTORY);
+		dualize(RETVAL, "B_USER_CONFIG_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_ADDONS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_ADDONS_DIRECTORY);
+		dualize(RETVAL, "B_USER_ADDONS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_BOOT_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_BOOT_DIRECTORY);
+		dualize(RETVAL, "B_USER_BOOT_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_FONTS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_FONTS_DIRECTORY);
+		dualize(RETVAL, "B_USER_FONTS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_LIB_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_LIB_DIRECTORY);
+		dualize(RETVAL, "B_USER_LIB_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_SETTINGS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_SETTINGS_DIRECTORY);
+		dualize(RETVAL, "B_USER_SETTINGS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_DESKBAR_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_DESKBAR_DIRECTORY);
+		dualize(RETVAL, "B_USER_DESKBAR_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_PRINTERS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_PRINTERS_DIRECTORY);
+		dualize(RETVAL, "B_USER_PRINTERS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_TRANSLATORS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_TRANSLATORS_DIRECTORY);
+		dualize(RETVAL, "B_USER_TRANSLATORS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_MEDIA_NODES_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_MEDIA_NODES_DIRECTORY);
+		dualize(RETVAL, "B_USER_MEDIA_NODES_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_SOUNDS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_SOUNDS_DIRECTORY);
+		dualize(RETVAL, "B_USER_SOUNDS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_DATA_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_DATA_DIRECTORY);
+		dualize(RETVAL, "B_USER_DATA_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_USER_CACHE_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_USER_CACHE_DIRECTORY);
+		dualize(RETVAL, "B_USER_CACHE_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_APPS_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_APPS_DIRECTORY);
+		dualize(RETVAL, "B_APPS_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_PREFERENCES_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_PREFERENCES_DIRECTORY);
+		dualize(RETVAL, "B_PREFERENCES_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+SV*
+B_UTILITIES_DIRECTORY()
+	CODE:
+		RETVAL = newSV(0);
+		sv_setiv(RETVAL, (IV)B_UTILITIES_DIRECTORY);
+		dualize(RETVAL, "B_UTILITIES_DIRECTORY");
+	OUTPUT:
+		RETVAL
+
+# xsubpp only enables overloaded operators for the initial module; additional
+# modules are out of luck unless they roll their own, so that's what we do
+# (XS_Haiku__StorageKit_nil defined automatically by xsubpp)
+BOOT:
+	sv_setsv(
+		get_sv("Haiku::FindDirectory::()", TRUE),
+		&PL_sv_yes	// so we don't get fallback errors
+	);
+    newXS("Haiku::FindDirectory::()", XS_Haiku__StorageKit_nil, file);
+

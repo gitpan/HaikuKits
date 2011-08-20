@@ -1,0 +1,120 @@
+#
+#Automatically generated file
+#
+	
+TYPEMAP
+uint8		T_UV
+uint32		T_UV
+int32		T_IV
+uint64		T_UV
+int64		T_IV
+blkcnt_t		T_IV
+blksize_t		T_IV
+app_verb		T_IV
+dev_t		T_IV
+directory_which		T_IV
+file_panel_mode		T_IV
+file_panel_button		T_IV
+gid_t		T_IV
+icon_size		T_IV
+ino_t		T_IV
+mode_t		T_IV
+nlink_t		T_IV
+off_t		T_IV
+query_op		T_IV
+size_t		T_IV
+ssize_t		T_IV
+status_t		T_IV
+time_t		T_IV
+type_code		T_UV
+uid_t		T_IV
+uint8*		T_PV
+BHandler*		NORM_OBJ_PTR
+BLooper*		NORM_OBJ_PTR
+BMessage*		NORM_OBJ_PTR
+BMessenger		NORM_OBJ
+BMessenger*		NORM_OBJ_PTR
+BWindow*		NORM_OBJ_PTR
+BEntryList		NORM_OBJ
+BEntryList*		NORM_OBJ_PTR
+BQuery		NORM_OBJ
+BQuery*		NORM_OBJ_PTR
+BFindDirectory		NORM_OBJ
+BFindDirectory*		NORM_OBJ_PTR
+BMime		NORM_OBJ
+BMime*		NORM_OBJ_PTR
+BMimeType		NORM_OBJ
+BMimeType*		NORM_OBJ_PTR
+BNodeInfo		NORM_OBJ
+BNodeInfo*		NORM_OBJ_PTR
+BNodeMonitor		NORM_OBJ
+BNodeMonitor*		NORM_OBJ_PTR
+BPath		NORM_OBJ
+BPath*		NORM_OBJ_PTR
+BStatable		NORM_OBJ
+BStatable*		NORM_OBJ_PTR
+BEntry		NORM_OBJ
+BEntry*		NORM_OBJ_PTR
+entry_ref		NORM_OBJ
+entry_ref*		NORM_OBJ_PTR
+BNode		NORM_OBJ
+BNode*		NORM_OBJ_PTR
+node_ref		NORM_OBJ
+node_ref*		NORM_OBJ_PTR
+BVolume		NORM_OBJ
+BVolume*		NORM_OBJ_PTR
+BVolumeRoster		NORM_OBJ
+BVolumeRoster*		NORM_OBJ_PTR
+dirent		NORM_OBJ
+dirent*		NORM_OBJ_PTR
+stat_beos		NORM_OBJ
+stat_beos*		NORM_OBJ_PTR
+stat_beos_time		NORM_OBJ
+stat_beos_time*		NORM_OBJ_PTR
+struct stat		NORM_OBJ
+struct stat*		NORM_OBJ_PTR
+timespec		NORM_OBJ
+timespec*		NORM_OBJ_PTR
+attr_info		NORM_OBJ
+attr_info*		NORM_OBJ_PTR
+const BVolume*		NORM_OBJ_PTR
+const entry_ref*		NORM_OBJ_PTR
+const uint8*		T_PV
+const BHandler*		NORM_OBJ_PTR
+const BLooper*		NORM_OBJ_PTR
+const node_ref*		NORM_OBJ_PTR
+const BPath		NORM_OBJ
+const BEntry*		NORM_OBJ_PTR
+const BEntry		NORM_OBJ
+const BNode		NORM_OBJ
+const BVolume		NORM_OBJ
+char**		CHARARRAY
+
+OUTPUT
+
+RESP_OBJ
+	sv_setsv($arg, $var.perl_link_data->perl_object);
+
+RESP_OBJ_PTR
+	sv_setsv($arg, $var->perl_link_data->perl_object);
+
+NORM_OBJ
+	sv_setsv($arg, create_perl_object((void*)&$var, CLASS));
+
+NORM_OBJ_PTR
+	sv_setsv($arg, create_perl_object((void*)$var, CLASS));
+
+INPUT
+
+RESP_OBJ
+	$var = *($type*)get_cpp_object($arg);
+
+RESP_OBJ_PTR
+	$var = ($type)get_cpp_object($arg);
+
+NORM_OBJ
+	$var = *($type*)get_cpp_object($arg);
+
+NORM_OBJ_PTR
+	$var = ($type)get_cpp_object($arg);
+
